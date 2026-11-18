@@ -2,6 +2,7 @@ const KEY = "att.token";
 export const getToken = () => localStorage.getItem(KEY);
 export const setToken = (t: string) => localStorage.setItem(KEY, t);
 export const clearToken = () => localStorage.removeItem(KEY);
+  const API_URL = import.meta.env.VITE_API_URL || "";
 
 export class ApiError extends Error {
   constructor(public status: number, public body: any, message?: string) { super(message ?? body?.error ?? `HTTP ${status}`); }
@@ -16,7 +17,6 @@ export async function api<T>(path: string, init: RequestInit = {}): Promise<T> {
   if (typeof init.body === "string" && !headers.has("Content-Type")) headers.set("Content-Type", "application/json");
   let res: Response;
   
-  const API_URL = import.meta.env.VITE_API_URL || "";
   const url = `${API_URL}${path}`;
 
 try {
