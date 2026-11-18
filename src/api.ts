@@ -38,7 +38,8 @@ export const post = <T>(path: string, data?: unknown) => api<T>(path, { method: 
 
 /** Authenticated file download (a plain link cannot send the Authorization header). */
 export async function download(path: string, filename: string) {
-  const res = await fetch(path, { headers: { Authorization: `Bearer ${getToken() ?? ""}` } });
+  
+  const res = await fetch(`${API_URL}${path}`, { headers: { Authorization: `Bearer ${getToken() ?? ""}` } });
   if (!res.ok) throw new ApiError(res.status, await res.json().catch(() => null));
   const url = URL.createObjectURL(await res.blob());
   const a = Object.assign(document.createElement("a"), { href: url, download: filename });
