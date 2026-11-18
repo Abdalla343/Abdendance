@@ -1,0 +1,33 @@
+@import "tailwindcss";
+@import "@fontsource-variable/readex-pro";
+
+@theme {
+  --font-sans: "Readex Pro Variable", system-ui, sans-serif;
+  --color-ground: #e4e7e4;
+  --color-paper: #f3f5f3;
+  --color-ink: #14212b;
+  --color-ink-2: #4b5a66;
+  --color-rule: #bfc6c1;
+  --color-in: #17696a;
+  --color-out: #8796a3;
+  --color-ok: #1e7b4f;
+  --color-block: #b3261e;
+  --color-notfound: #b35c00;
+  --color-warn: #866500;
+  --color-pending: #f2c200;
+}
+
+html { background: var(--color-ground); color: var(--color-ink); font-family: var(--font-sans); -webkit-text-size-adjust: 100%; }
+body { margin: 0; min-height: 100dvh; line-height: 1.55; }
+:focus-visible { outline: 2px solid var(--color-in); outline-offset: 2px; }
+.num { font-variant-numeric: tabular-nums; }
+.btn { display: inline-flex; align-items: center; justify-content: center; min-height: 2.5rem; padding: 0 1rem; border: 1.5px solid var(--color-ink); background: transparent; color: var(--color-ink); font: inherit; font-weight: 500; font-size: .875rem; border-radius: 3px; cursor: pointer; }
+.btn:hover:not(:disabled) { background: var(--color-ink); color: var(--color-paper); }
+.btn:disabled { opacity: .5; cursor: default; }
+.btn-solid { background: var(--color-ink); color: var(--color-paper); }
+.btn-solid:hover:not(:disabled) { background: #22384a; }
+.field { width: 100%; min-height: 2.75rem; padding: 0 .75rem; border: 1.5px solid var(--color-ink-2); background: var(--color-paper); color: var(--color-ink); font: inherit; border-radius: 3px; }
+.section-title { font-size: 1rem; font-weight: 600; border-top: 2px solid var(--color-ink); padding-top: .75rem; margin: 0 0 .75rem; }
+.rule-row { border-bottom: 1px solid var(--color-rule); }
+dialog { color: var(--color-ink); }
+dialog::backdrop { background: rgb(20 33 43 / .55); }
