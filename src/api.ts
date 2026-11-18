@@ -15,7 +15,20 @@ export async function api<T>(path: string, init: RequestInit = {}): Promise<T> {
   if (token) headers.set("Authorization", `Bearer ${token}`);
   if (typeof init.body === "string" && !headers.has("Content-Type")) headers.set("Content-Type", "application/json");
   let res: Response;
-  try { res = await fetch(path, { ...init, headers }); } catch { throw new ApiError(0, null, "network"); }
+  
+  const API_URL = import.meta.env.VITE_API_URL || "";
+  const url = `${API_URL}${path}`;
+
+try {
+  res = await fetch(url, {
+    ...init,
+    headers
+  });
+} catch {
+  throw new ApiError(0, null, "network");
+}
+  //try { res = await fetch(path, { ...init, headers }); } catch { throw new ApiError(0, null, "network"); }
+  
   const body = await res.json().catch(() => null);
   if (res.status === 401 && token && !path.startsWith("/api/auth/login")) onUnauthorized();
   if (!res.ok) throw new ApiError(res.status, body);
