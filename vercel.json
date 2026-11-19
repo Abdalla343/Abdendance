@@ -5,6 +5,10 @@
     {
       "source": "/api/:path*",
       "destination": "http://na-one.enzonic.com:25811/api/:path*"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
     }
   ]
 }
