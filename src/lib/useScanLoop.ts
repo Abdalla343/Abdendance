@@ -6,7 +6,7 @@ import type { FrameReader } from "../ocr/reader";
 import { NationalIdAgreement, ScanFrames } from "./scanFrames";
 
 /** Guide rectangle in view coordinates. */
-export const GUIDE = { x: 0.04, w: 0.92, h: 0.26, cy: 0.44 };
+export const GUIDE = { x: 0.04, w: 0.92, h: 0.18, cy: 0.44 };
 const TARGET_W = 1000;
 
 interface Opts {
