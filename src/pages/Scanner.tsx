@@ -116,14 +116,14 @@ export default function Scanner() {
         ))}
       </div>
 
-      <div className="flex flex-wrap items-center gap-2 bg-paper px-2 pb-2">
+      {/* <div className="flex flex-wrap items-center gap-2 bg-paper px-2 pb-2">
         <label className="sr-only" htmlFor="card-type">{t("employeeCard")}</label>
         <select id="card-type" className="field !w-auto flex-1" value={cardType} disabled={!scanning} onChange={(e) => { looked.current.clear(); setCardType(e.target.value as CardType); }}>
           <option value="national">{t("nationalCard")}</option>
           <option value="employee">{t("employeeCard")}</option>
         </select>
         {cardType === "employee" && <span className="text-xs text-ink-2">{t("employeeCardHint")}</span>}
-      </div>
+      </div> */}
 
       <div ref={view} className="relative min-h-0 flex-1 overflow-hidden">
         <video ref={cam.videoRef} playsInline muted autoPlay className="absolute inset-0 h-full w-full object-cover" />
@@ -153,7 +153,7 @@ export default function Scanner() {
         <button type="button" className="btn !min-h-12 flex-1" onClick={() => changePhase({ k: "manual", value: "", notFound: false })}>{t("typeId")}</button>
         {cam.torchSupported && <button type="button" className="btn !min-h-12" aria-pressed={cam.torchOn} onClick={() => void cam.toggleTorch()}>{cam.torchOn ? t("lightOff") : t("lightOn")}</button>}
         <button type="button" className="btn !min-h-12" aria-pressed={sound} onClick={() => setSound(!sound)}>{sound ? t("soundOn") : t("soundOff")}</button>
-        <input className="field !min-h-12 !w-28" aria-label={t("gateName")} placeholder={t("gateName")} value={gate} maxLength={32} onChange={(e) => setGate(e.target.value)} />
+        <input className="field !min-h-12 !w-28" aria-label={t("gateName")} disabled={true} placeholder={t("gateName")} value={gate} maxLength={32} onChange={(e) => setGate(e.target.value)} />
       </div>
     </div>
   );
