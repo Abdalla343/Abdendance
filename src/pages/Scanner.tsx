@@ -16,7 +16,7 @@ import { FrameReader, type CardType } from "../ocr/reader";
 type Phase = { k: "scanning" } | { k: "busy"; shown: Shown } | { k: "result"; shown: Shown } | { k: "manual"; value: string; notFound: boolean; review?: boolean };
 const COOLDOWN_MS = 8000;
 const read = <T,>(key: string, fallback: T): T => { try { return (JSON.parse(localStorage.getItem(key) ?? "null") as T) ?? fallback; } catch { return fallback; } };
-cons
+
 export default function Scanner() {
   const { t } = useI18n(); const { user } = useAuth();
   const [mode, setMode] = useState<Direction>(() => read("att.mode", "IN"));      // stays until the officer changes it
