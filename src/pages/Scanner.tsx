@@ -154,7 +154,7 @@ export default function Scanner() {
         <button type="button" className="btn !min-h-12 flex-1" onClick={() => changePhase({ k: "manual", value: "", notFound: false })}>{t("typeId")}</button>
         {cam.torchSupported && <button type="button" className="btn !min-h-12" aria-pressed={cam.torchOn} onClick={() => void cam.toggleTorch()}>{cam.torchOn ? t("lightOff") : t("lightOn")}</button>}
         <button type="button" className="btn !min-h-12" aria-pressed={sound} onClick={() => setSound(!sound)}>{sound ? t("soundOn") : t("soundOff")}</button>
-        <input className="field !min-h-12 !w-28" aria-label={t("gateName")} disabled={true} placeholder={t("gateName")} value={gate} maxLength={32} onChange={(e) => setGate(e.target.value)} />
+        <input className="field !min-h-12 !w-28" aria-label={gate} disabled={true} placeholder={gate} value={gate} maxLength={32} onChange={(e) => setGate(e.target.value)} />
       </div>
     </div>
   );
